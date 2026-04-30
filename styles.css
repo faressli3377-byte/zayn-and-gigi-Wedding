@@ -1662,29 +1662,33 @@ button {
 /* ── Love Chase Avatars ── */
 .chase-avatar {
   position: fixed !important;
-  left: 0;
-  top: 0;
   display: none;
-  width: clamp(58px, 7vw, 96px);
-  aspect-ratio: 1 / 1;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid var(--theme-primary);
-  box-shadow:
-    0 10px 26px rgba(0, 0, 0, 0.24),
-    0 0 0 5px rgba(255, 255, 255, 0.35);
+  border: 3px solid #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   pointer-events: none !important;
   z-index: 999999 !important;
-  will-change: transform, opacity;
-  transform: translate3d(-200px, -200px, 0);
+  will-change: opacity;
 }
 
-.chase-bride {
-  border-color: var(--theme-primary);
+.groom-img {
+  right: 5% !important;
+  top: 25% !important;
 }
 
-.chase-groom {
-  border-color: var(--theme-secondary);
+.bride-img {
+  left: 5% !important;
+  top: 25% !important;
+}
+
+@media (max-width: 768px) {
+  .chase-avatar {
+    width: 70px;
+    height: 70px;
+  }
 }
 
 #theme-overlay {
