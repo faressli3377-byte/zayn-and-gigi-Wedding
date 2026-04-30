@@ -36,7 +36,6 @@ const weddingConfig = {
 
 let guestSource = 'Unknown';
 let selectedTheme = null;
-let chaseInitialized = false;
 
 (function initThemeAndSplash() {
   applyWeddingConfig();
@@ -220,23 +219,14 @@ function showChaseAvatars() {
   const groom = $('#chase-groom');
   if (!bride || !groom) return;
 
-  gsap.set([bride, groom], {
-    display: 'block',
+  gsap.set([bride, groom], { display: 'block' });
+  gsap.fromTo([bride, groom], {
+    autoAlpha: 0,
+  }, {
     autoAlpha: 1,
-    xPercent: -50,
-    yPercent: -50,
-    x: window.innerWidth * 0.78,
-    y: window.innerHeight * 0.2,
-    scale: 0.2,
-  });
-
-  gsap.to(bride, { scale: 1, duration: 0.75, ease: 'back.out(1.9)' });
-  gsap.to(groom, {
-    x: window.innerWidth * 0.84,
-    y: window.innerHeight * 0.27,
-    scale: 0.95,
-    duration: 0.85,
-    ease: 'back.out(1.5)',
+    duration: 0.5,
+    ease: 'power2.out',
+    stagger: 0.06,
   });
 }
 
@@ -707,122 +697,14 @@ function initDigitalTicket() {
   });
 }
 
-function clamp(value, min, max) {
-  return Math.min(max, Math.max(min, value));
-}
-
-function lerp(a, b, t) {
-  return a + (b - a) * t;
-}
-
-function getPathPoint(progress, vw, vh, role) {
-  const isMobile = vw < 768;
-  const margin = isMobile ? 38 : 56;
-  const sideGap = isMobile ? 34 : 54;
-  const amp = isMobile ? Math.min(56, vw * 0.16) : Math.min(118, vw * 0.22);
-
-  const startY = vh * 0.18;
-  const driftEndY = Math.min(vh * 0.78, vh - 70);
-  const convergeY = Math.min(vh * 0.82, vh - 64);
-
-  const preEnd = 0.86;
-  const p = clamp(progress, 0, 1);
-
-  const waveSign = role === 'bride' ? 1 : -1;
-  const phase = role === 'bride' ? 0 : 0.4;
-  const roleOffset = role === 'bride' ? 0 : (isMobile ? 16 : 24);
-
-  const toDriftPoint = (t) => {
-    const baseX = lerp(vw - margin, margin + amp * 0.8, t);
-    const wave = Math.sin(t * Math.PI * 3.4 + phase) * amp * waveSign * (1 - t * 0.55);
-    const x = clamp(baseX + wave + roleOffset, margin, vw - margin);
-    const y = lerp(startY, driftEndY, t);
-    const rot = Math.sin(t * Math.PI * 5 + phase) * 7;
-    return { x, y, rot };
-  };
-
-  if (p <= preEnd) {
-    return toDriftPoint(p / preEnd);
-  }
-
-  const drift = toDriftPoint(1);
-  const t = (p - preEnd) / (1 - preEnd);
-  const targetX = role === 'bride' ? vw / 2 - sideGap : vw / 2 + sideGap;
-
-  return {
-    x: lerp(drift.x, targetX, t),
-    y: lerp(drift.y, convergeY, t),
-    rot: lerp(drift.rot, 0, t),
-  };
-}
-
 function initLoveChase() {
-  if (chaseInitialized) {
-    ScrollTrigger.refresh();
-    return;
-  }
-
   const bride = $('#chase-bride');
   const groom = $('#chase-groom');
   if (!bride || !groom) return;
 
-  chaseInitialized = true;
-
-  gsap.set([bride, groom], {
-    display: 'block',
-    autoAlpha: 1,
-    xPercent: -50,
-    yPercent: -50,
-    left: 0,
-    top: 0,
-  });
-
-  const setBrideX = gsap.quickSetter(bride, 'x', 'px');
-  const setBrideY = gsap.quickSetter(bride, 'y', 'px');
-  const setBrideR = gsap.quickSetter(bride, 'rotation', 'deg');
-
-  const setGroomX = gsap.quickSetter(groom, 'x', 'px');
-  const setGroomY = gsap.quickSetter(groom, 'y', 'px');
-  const setGroomR = gsap.quickSetter(groom, 'rotation', 'deg');
-
-  const driver = { p: 0 };
-  let groomProgress = 0;
-
-  const updateChase = (progress) => {
-    const vw = window.innerWidth;
-    const vh = window.innerHeight;
-
-    const bridePoint = getPathPoint(progress, vw, vh, 'bride');
-
-    const lag = vw < 768 ? 0.085 : 0.065;
-    const targetGroomProgress = clamp(progress - lag, 0, 1);
-    groomProgress += (targetGroomProgress - groomProgress) * 0.24;
-
-    const groomPoint = getPathPoint(groomProgress, vw, vh, 'groom');
-
-    setBrideX(bridePoint.x);
-    setBrideY(bridePoint.y);
-    setBrideR(bridePoint.rot);
-
-    setGroomX(groomPoint.x);
-    setGroomY(groomPoint.y);
-    setGroomR(groomPoint.rot * 0.7);
-  };
-
-  updateChase(0);
-
-  gsap.to(driver, {
-    p: 1,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: document.body,
-      start: 'top top',
-      endTrigger: '#rsvp',
-      end: 'bottom bottom',
-      scrub: 1,
-      invalidateOnRefresh: true,
-      onUpdate: () => updateChase(driver.p),
-      onRefresh: () => updateChase(driver.p),
-    },
-  });
+  if (selectedTheme) {
+    gsap.set([bride, groom], { display: 'block', autoAlpha: 1 });
+  } else {
+    gsap.set([bride, groom], { display: 'none', autoAlpha: 0 });
+  }
 }
