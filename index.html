@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Mohamed & Sara — A celebration of love, union, and a new beginning. Join us on May 2, 2026." />
+  <title>Mohamed & Sara — May 2, 2026</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <!-- ========== THEME OVERLAY ========== -->
+  <div id="theme-overlay" class="theme-overlay">
+    <div class="theme-content">
+      <h2 class="theme-title">Welcome!</h2>
+      <p class="theme-subtitle">Are you a guest of?</p>
+      <div class="theme-buttons">
+        <button id="groomBtn" class="theme-btn" data-theme="groom">The Groom 🤵</button>
+        <button id="brideBtn" class="theme-btn" data-theme="bride">The Bride 👰</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== LOVE CHASE AVATARS (DIRECT BODY CHILDREN) ========== -->
+  <img
+    id="chase-bride"
+    class="chase-avatar chase-bride"
+    src="https://i.postimg.cc/SN3yW29x/Whats-App-Image-2026-04-30-at-2-27-54-PMv.jpg"
+    alt="Bride chase avatar"
+    loading="lazy"
+    decoding="async"
+  />
+  <img
+    id="chase-groom"
+    class="chase-avatar chase-groom"
+    src="https://i.postimg.cc/TYFRrLbw/Whats-App-Image-2026-04-30-at-2-27-54-PM.jpg"
+    alt="Groom chase avatar"
+    loading="lazy"
+    decoding="async"
+  />
+
+  <!-- ========== SPLASH SCREEN ========== -->
+  <div id="splash" class="splash">
+    <div class="splash-particles" id="splashParticles"></div>
+    <div class="splash-content">
+      <div class="splash-ornament top"></div>
+      <p class="splash-line" id="sl1">You are holding a piece of our heart...</p>
+      <p class="splash-line" id="sl2">Because you've been a part of our story...</p>
+      <p class="splash-line" id="sl3">We invite you to celebrate our new beginning.</p>
+      <div class="splash-divider"></div>
+      <button id="enterBtn" class="enter-btn" aria-label="Open invitation">
+        <span class="enter-btn-text">Open Our Love Story</span>
+        <span class="enter-btn-icon">↓</span>
+      </button>
+      <div class="splash-ornament bottom"></div>
+    </div>
+  </div>
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main id="mainContent" class="main-hidden">
+
+    <!-- ── HERO ── -->
+    <section id="hero" class="hero">
+      <div class="hero-bg-overlay parallax-bg"></div>
+      <div class="hero-content">
+        <p class="hero-pre reveal-item">The celebration of</p>
+        <h1 class="hero-names reveal-item">
+          <span class="name-adam">Mohamed</span>
+          <span class="hero-ampersand">&</span>
+          <span class="name-farah">Sara</span>
+        </h1>
+        <p class="hero-tagline reveal-item">— The Union of Two Souls —</p>
+        <p class="hero-date reveal-item" id="heroWeddingDate">Saturday · May 2, 2026</p>
+        <div class="hero-scroll-hint">
+          <span class="scroll-arrow"></span>
+        </div>
+      </div>
+      <div class="floating-petals" id="petals"></div>
+    </section>
+
+    <!-- ── OUR ROOTS ── -->
+    <section id="roots" class="roots section-padding">
+      <div class="section-header reveal-item">
+        <span class="section-label">Chapter One</span>
+        <h2 class="section-title">Where It All Began</h2>
+        <p class="section-subtitle">Two paths, written in the stars, destined to intertwine.</p>
+      </div>
+
+      <div class="roots-grid">
+        <!-- Adam -->
+        <div class="root-card reveal-item" data-delay="0">
+          <div class="root-circle-wrapper">
+            <div class="root-circle young">
+              <img src="https://i.postimg.cc/G299RCJX/Whats-App-Image-2026-04-30-at-12-29-11-AM.jpg" alt="Young Adam"
+                class="root-img young-img" loading="lazy" />
+              <img src="https://i.postimg.cc/TYFRrLbw/Whats-App-Image-2026-04-30-at-2-27-54-PM.jpg" alt="Adam today"
+                class="root-img adult-img" loading="lazy" />
+              <div class="root-circle-ring"></div>
+            </div>
+            <div class="root-label">
+              <span class="root-name">Adam</span>
+              <span class="root-scroll-hint">Scroll to reveal ↓</span>
+            </div>
+          </div>
+          <div class="root-text">
+            <p class="root-quote">"From the boy who chased sunsets to the man who became one."</p>
+            <p class="root-desc">He grew up with quiet strength — the kind that doesn't shout but always shows up. Even
+              as a child, he had that gentle fire in his eyes, a certainty that love was worth waiting for. He didn't
+              know her name yet, but he was already becoming the man she deserved.</p>
+          </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="roots-center-symbol reveal-item" data-delay="0.2">
+          <div class="roots-vine"></div>
+          <span class="roots-heart">♡</span>
+          <div class="roots-vine bottom"></div>
+        </div>
+
+        <!-- Farah -->
+        <div class="root-card reveal-item" data-delay="0.1">
+          <div class="root-circle-wrapper">
+            <div class="root-circle young">
+              <img src="https://i.postimg.cc/MTXXwSbb/Whats-App-Image-2026-04-30-at-12-29-11-AMn.jpg" alt="Young Farah"
+                class="root-img young-img" loading="lazy" />
+              <img src="https://i.postimg.cc/SN3yW29x/Whats-App-Image-2026-04-30-at-2-27-54-PMv.jpg" alt="Farah today"
+                class="root-img adult-img" loading="lazy" />
+              <div class="root-circle-ring"></div>
+            </div>
+            <div class="root-label">
+              <span class="root-name">Farah</span>
+              <span class="root-scroll-hint">Scroll to reveal ↓</span>
+            </div>
+          </div>
+          <div class="root-text">
+            <p class="root-quote">"From the girl who dreamed in color to the woman who painted the world."</p>
+            <p class="root-desc">She carried warmth like a season — arriving and transforming everything around her
+              without any effort at all. Her laugh, her grace, her boundless curiosity were chapters written long before
+              she ever knew who would want to read them every day for the rest of his life.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="roots-crossing reveal-item">
+        <p class="roots-crossing-text">Until the universe — tired of keeping two beautiful things apart — finally said:
+          <em>"It's time."</em>
+        </p>
+      </div>
+    </section>
+
+    <!-- ── PROGRAM / TIMELINE ── -->
+    <section id="program" class="program section-padding">
+      <div class="program-bg-pattern parallax-bg"></div>
+      <div class="section-header reveal-item">
+        <span class="section-label">The Ceremony</span>
+        <h2 class="section-title">A Day to Remember</h2>
+        <p class="section-subtitle">Every moment, carefully crafted with love.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-line"></div>
+
+        <div class="timeline-item reveal-item" data-delay="0">
+          <div class="timeline-dot">
+            <span class="timeline-icon">🌹</span>
+          </div>
+          <div class="timeline-card left">
+            <span class="timeline-time">06:00 PM</span>
+            <h3 class="timeline-title">The Grand Entrance & Welcoming</h3>
+            <p class="timeline-desc">Arrive and be wrapped in the warmth of celebration. As the golden hour casts its
+              final glow, our gates open and our hearts do too. Let yourself be received like the treasured guest that
+              you are.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal-item" data-delay="0.15">
+          <div class="timeline-dot">
+            <span class="timeline-icon">💍</span>
+          </div>
+          <div class="timeline-card right">
+            <span class="timeline-time">07:30 PM</span>
+            <h3 class="timeline-title">The Ring Exchange & First Dance</h3>
+            <p class="timeline-desc">The moment two lives officially become one story. Witness the exchange of promises
+              and the first dance of forever — a memory we will carry every single day that follows.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal-item" data-delay="0.3">
+          <div class="timeline-dot">
+            <span class="timeline-icon">🍽️</span>
+          </div>
+          <div class="timeline-card left">
+            <span class="timeline-time">09:00 PM</span>
+            <h3 class="timeline-title">The Royal Banquet</h3>
+            <p class="timeline-desc">An exquisite dinner buffet awaits — an array of flavors as rich and layered as the
+              love that brought us all here. Share a table, share a laugh, and let the evening unfold at your own
+              perfect pace.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal-item" data-delay="0.45">
+          <div class="timeline-dot">
+            <span class="timeline-icon">🎂</span>
+          </div>
+          <div class="timeline-card right">
+            <span class="timeline-time">10:30 PM</span>
+            <h3 class="timeline-title">Cake Cutting & Celebration</h3>
+            <p class="timeline-desc">Let the music rise, the lights dance, and the night stretch into something none of
+              us will want to end. Join us as we slice into the sweetness of a future we are just beginning to taste.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── DRESS CODE ── -->
+    <section id="dresscode" class="dresscode section-padding">
+      <div class="section-header reveal-item">
+        <span class="section-label">Dress Code</span>
+        <h2 class="section-title">Dress the Part</h2>
+        <p class="section-subtitle">We would love to see our guests in a unified, elegant palette.</p>
+      </div>
+
+      <div class="dresscode-grid">
+        <div class="dresscode-card reveal-item" data-delay="0">
+          <div class="dresscode-icon-wrap gentleman">
+            <svg class="dresscode-svg" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="40" cy="18" r="14" stroke="currentColor" stroke-width="2" />
+              <path d="M16 100 C16 70 25 58 40 58 C55 58 64 70 64 100" stroke="currentColor" stroke-width="2"
+                fill="none" />
+              <path d="M40 58 L34 72 L40 68 L46 72 Z" stroke="currentColor" stroke-width="1.5" fill="currentColor"
+                opacity="0.4" />
+              <path d="M35 58 L28 90" stroke="currentColor" stroke-width="1.5" />
+              <path d="M45 58 L52 90" stroke="currentColor" stroke-width="1.5" />
+            </svg>
+          </div>
+          <h3 class="dresscode-title">Gentlemen</h3>
+          <p class="dresscode-palette">White Suits · White Formal Wear</p>
+          <p class="dresscode-note">Crisp, clean, and effortlessly sharp. A white suit carries the same timeless
+            confidence that built empires and swept hearts. Be the gentleman that turns heads and keeps them.</p>
+          <div class="dresscode-swatches">
+            <div class="swatch" style="background:#FAFAFA;" title="Ivory White"></div>
+            <div class="swatch" style="background:#F0EDE6;" title="Warm White"></div>
+            <div class="swatch" style="background:#E8E0D0;" title="Linen"></div>
+          </div>
+        </div>
+
+        <div class="dresscode-divider reveal-item">
+          <div class="dresscode-amp">&</div>
+        </div>
+
+        <div class="dresscode-card reveal-item" data-delay="0.1">
+          <div class="dresscode-icon-wrap lady">
+            <svg class="dresscode-svg" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="40" cy="16" r="12" stroke="currentColor" stroke-width="2" />
+              <path d="M28 38 C28 38 20 55 14 100 L66 100 C60 55 52 38 52 38 Z" stroke="currentColor" stroke-width="2"
+                fill="currentColor" opacity="0.1" />
+              <path d="M28 38 L40 30 L52 38" stroke="currentColor" stroke-width="1.5" fill="none" />
+            </svg>
+          </div>
+          <h3 class="dresscode-title">Ladies</h3>
+          <p class="dresscode-palette">Beige · Champagne · Sand Tones</p>
+          <p class="dresscode-note">Grace in every shade of warmth. Choose something that speaks your soul in the
+            language of champagne silk, desert sand, or soft blush earth — and arrive like the goddess that you are.</p>
+          <div class="dresscode-swatches">
+            <div class="swatch" style="background:#E8D5B7;" title="Champagne"></div>
+            <div class="swatch" style="background:#D4B896;" title="Beige"></div>
+            <div class="swatch" style="background:#C4A882;" title="Sand Gold"></div>
+          </div>
+        </div>
+      </div>
+
+      <p class="dresscode-footer reveal-item">Because when everyone glows in the same palette, the photographs become
+        eternal art.</p>
+    </section>
+
+    <!-- ── VENUE ── -->
+    <section id="venue" class="venue section-padding">
+      <div class="section-header reveal-item">
+        <span class="section-label">The Venue</span>
+        <h2 class="section-title">Rexoplaza</h2>
+        <p class="section-subtitle">Where elegance meets nature and magic feels inevitable.</p>
+      </div>
+
+      <div class="venue-gallery reveal-item">
+        <div class="venue-img-main">
+          <img src="https://i.postimg.cc/xT594xBz/Whats-App-Image-2026-04-30-at-2-39-12-PMo.jpg"
+            alt="White Garden Venue" class="venue-img" loading="lazy" />
+          <div class="venue-img-overlay">
+            <span class="venue-img-label">White Garden — Main Hall</span>
+          </div>
+        </div>
+        <div class="venue-img-grid">
+          <div class="venue-img-small">
+            <img src="https://i.postimg.cc/dt6JxHgZ/Whats-App-Image-2026-04-30-at-2-39-11-PMx.jpg" alt="Venue detail 1"
+              class="venue-img" loading="lazy" />
+          </div>
+          <div class="venue-img-small">
+            <img src="https://i.postimg.cc/Dy67MjRP/Whats-App-Image-2026-04-30-at-2-39-11-PMn.jpg" alt="Venue detail 2"
+              class="venue-img" loading="lazy" />
+          </div>
+          <div class="venue-img-small">
+            <img src="https://i.postimg.cc/FsphBWwf/Whats-App-Image-2026-04-30-at-2-39-11-PM.jpg" alt="Venue detail 3"
+              class="venue-img" loading="lazy" />
+          </div>
+          <div class="venue-img-small">
+            <img src="https://i.postimg.cc/5NgfR7DX/Whats-App-Image-2026-04-30-at-2-39-11-PMs.jpg" alt="Venue detail 4"
+              class="venue-img" loading="lazy" />
+          </div>
+        </div>
+      </div>
+
+      <div class="venue-cta reveal-item">
+        <p class="venue-address">Rexoplaza</p>
+        <a href="https://www.google.com/maps/search/White+Garden+Cairo" target="_blank" rel="noopener noreferrer"
+          id="navigateBtn" class="navigate-btn">
+          <span class="navigate-icon">📍</span>
+          Navigate to Love
+        </a>
+      </div>
+    </section>
+
+    <!-- ── RSVP ── -->
+    <section id="rsvp" class="rsvp section-padding">
+      <div class="section-header reveal-item">
+        <span class="section-label">RSVP</span>
+        <h2 class="section-title">Will You Celebrate With Us?</h2>
+        <p class="section-subtitle">A quick response helps us prepare your seat with love.</p>
+      </div>
+
+      <div class="rsvp-card reveal-item">
+        <form id="rsvpForm" class="rsvp-form" novalidate>
+
+          <!-- Floating label: Name -->
+          <div class="rsvp-float-field">
+            <input id="rsvpName" class="rsvp-float-input" type="text" maxlength="80" placeholder=" " required />
+            <label class="rsvp-float-label" for="rsvpName">Your Full Name</label>
+            <span class="rsvp-float-line"></span>
+          </div>
+
+          <!-- Floating label: Guests -->
+          <div class="rsvp-float-field">
+            <input id="rsvpGuests" class="rsvp-float-input" type="number" min="1" max="6" placeholder=" " value="1"
+              required />
+            <label class="rsvp-float-label" for="rsvpGuests">Number of Guests (1–6)</label>
+            <span class="rsvp-float-line"></span>
+          </div>
+
+          <!-- Attendance options -->
+          <div class="rsvp-options" role="radiogroup" aria-label="Attendance status">
+            <label class="rsvp-option">
+              <input type="radio" name="attendance" value="joyfully_attending" checked />
+              <span>Joyfully Attending</span>
+            </label>
+            <label class="rsvp-option">
+              <input type="radio" name="attendance" value="regretfully_absent" />
+              <span>Regretfully Absent</span>
+            </label>
+          </div>
+
+          <!-- Floating label: Note -->
+          <div class="rsvp-float-field">
+            <textarea id="rsvpNote" class="rsvp-float-input rsvp-float-textarea" rows="3" maxlength="220"
+              placeholder=" "></textarea>
+            <label class="rsvp-float-label" for="rsvpNote">A Sweet Note (Optional)</label>
+            <span class="rsvp-float-line"></span>
+          </div>
+
+          <!-- Submit -->
+          <div class="rsvp-actions">
+            <button type="submit" id="rsvpSubmitBtn" class="rsvp-submit-btn">
+              <span>Confirm Attendance</span>
+              <span class="send-icon">♡</span>
+            </button>
+          </div>
+          <p id="rsvpSuccess" class="rsvp-success" aria-live="polite"></p>
+
+        </form>
+      </div>
+    </section>
+
+    <!-- ── DIGITAL TICKET ── -->
+    <section id="digital-ticket" class="digital-ticket section-padding">
+      <div class="section-header reveal-item">
+        <span class="section-label">Your Keepsake</span>
+        <h2 class="section-title">The Royal Invitation</h2>
+        <p class="section-subtitle">Claim your personalized invitation and save it to your gallery.</p>
+      </div>
+
+      <div class="ticket-wrap">
+        <div id="ticketCard" class="ticket-card">
+          <div class="ticket-bg-icon heart-a">♡</div>
+          <div class="ticket-bg-icon heart-b">♡</div>
+          <div class="ticket-bg-icon mc-badge">MC</div>
+          <div class="ticket-bg-icon spark">✦</div>
+
+          <div class="ticket-header">
+            <p class="ticket-kicker">Your Digital Ticket</p>
+            <h3 id="ticketCoupleNames" class="ticket-title">Mohamed & Sara</h3>
+          </div>
+
+          <div class="ticket-grid">
+            <div class="ticket-row">
+              <span class="ticket-label">Guest Name</span>
+              <span id="ticketGuestName" class="ticket-value ticket-name">Your Name Here</span>
+            </div>
+            <div class="ticket-row">
+              <span class="ticket-label">Side</span>
+              <span id="ticketGuestSide" class="ticket-value">Select Groom or Bride</span>
+            </div>
+            <div class="ticket-row">
+              <span class="ticket-label">Event Date & Time</span>
+              <span id="ticketEventDate" class="ticket-value">Saturday · 2/5/2026 · 06:00 PM</span>
+            </div>
+            <div class="ticket-row">
+              <span class="ticket-label">Location</span>
+              <span id="ticketLocationText" class="ticket-value">rexoplaza</span>
+            </div>
+          </div>
+
+          <div class="ticket-footer">
+            <span class="ticket-code">INV-2026-LOVE</span>
+          </div>
+        </div>
+
+        <div class="ticket-controls">
+          <label for="ticketNameInput" class="ticket-input-label">Enter Your Name to Claim Your Invitation</label>
+          <input
+            id="ticketNameInput"
+            class="ticket-name-input"
+            type="text"
+            maxlength="80"
+            placeholder="Type your full name..."
+          />
+          <button id="saveTicketBtn" class="save-ticket-btn" type="button">Save Ticket to Gallery 📸</button>
+          <p id="ticketStatus" class="ticket-status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- ── FOOTER ── -->
+    <footer id="footer" class="footer">
+      <div class="footer-ornament"></div>
+
+      <div class="footer-content">
+        <h2 class="footer-names reveal-item">Mohamed & Sara</h2>
+        <p class="footer-date reveal-item" id="footerWeddingDate">May 2, 2026</p>
+
+        <div class="countdown-wrapper reveal-item" id="countdown">
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-days">—</span>
+            <span class="countdown-label">Days</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-hours">—</span>
+            <span class="countdown-label">Hours</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-mins">—</span>
+            <span class="countdown-label">Minutes</span>
+          </div>
+          <div class="countdown-sep">:</div>
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-secs">—</span>
+            <span class="countdown-label">Seconds</span>
+          </div>
+        </div>
+
+        <blockquote class="footer-quote reveal-item">
+          "Love is not just something you feel,<br />it's something you do."
+        </blockquote>
+
+        <p class="footer-credit reveal-item">Made with ♡ for the most deserving love story we know.</p>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Nav dots -->
+  <nav class="side-nav" id="sideNav" aria-label="Section navigation">
+    <a href="#hero" class="nav-dot active" data-section="hero" title="Hero"></a>
+    <a href="#roots" class="nav-dot" data-section="roots" title="Our Roots"></a>
+    <a href="#program" class="nav-dot" data-section="program" title="Program"></a>
+    <a href="#dresscode" class="nav-dot" data-section="dresscode" title="Dress Code"></a>
+    <a href="#venue" class="nav-dot" data-section="venue" title="Venue"></a>
+    <a href="#rsvp" class="nav-dot" data-section="rsvp" title="RSVP"></a>
+    <a href="#digital-ticket" class="nav-dot" data-section="digital-ticket" title="Digital Ticket"></a>
+  </nav>
+
+  <script src="script.js"></script>
+
+  <audio id="weddingMusic" src="https://res.cloudinary.com/durlokstj/video/upload/v1777565607/music.mp3_gxt8rx.m4a"
+    loop></audio>
+</body>
+
+</html>
