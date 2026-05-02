@@ -1,5 +1,5 @@
 /* ============================================================
-   ADAM & FARAH - Wedding Invitation Script
+   ZAYN & GIGI - Wedding Invitation Script
    ============================================================ */
 'use strict';
 
@@ -9,28 +9,26 @@ const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => document.querySelectorAll(sel);
 
 const weddingConfig = {
-  groomName: 'mohamed',
-  brideName: 'sara',
+  groomName: 'zayn',
+  brideName: 'gigi',
   weddingDate: {
     year: 2026,
     monthIndex: 4, // May (0-based index)
-    day: 2,
+    day: 5,
     hour: 18,
     minute: 0,
     second: 0,
-    displayShort: '2/5/2026',
-    displayLong: 'Saturday · May 2, 2026',
-    displayWithTime: 'Saturday · 2/5/2026 · 06:00 PM',
+    displayShort: '5/5/2026',
+    displayLong: 'Tuesday · May 5, 2026',
+    displayWithTime: 'Tuesday · 5/5/2026 · 06:00 PM',
   },
-  location: 'rexoplaza',
+  location: 'Rexoplaza',
   ticketCode: 'INV-2026-LOVE',
   images: {
-    chaseBride: 'https://i.postimg.cc/SN3yW29x/Whats-App-Image-2026-04-30-at-2-27-54-PMv.jpg',
-    chaseGroom: 'https://i.postimg.cc/TYFRrLbw/Whats-App-Image-2026-04-30-at-2-27-54-PM.jpg',
-    rootsBrideYoung: 'https://i.postimg.cc/MTXXwSbb/Whats-App-Image-2026-04-30-at-12-29-11-AMn.jpg',
-    rootsBrideAdult: 'https://i.postimg.cc/SN3yW29x/Whats-App-Image-2026-04-30-at-2-27-54-PMv.jpg',
-    rootsGroomYoung: 'https://i.postimg.cc/G299RCJX/Whats-App-Image-2026-04-30-at-12-29-11-AM.jpg',
-    rootsGroomAdult: 'https://i.postimg.cc/TYFRrLbw/Whats-App-Image-2026-04-30-at-2-27-54-PM.jpg',
+    rootsGroomYoung: 'https://res.cloudinary.com/durlokstj/image/upload/v1777757363/WhatsApp_Image_2026-05-03_at_12.17.57_AM_obaobf.jpg',
+    rootsGroomAdult: 'https://res.cloudinary.com/durlokstj/image/upload/v1777757363/WhatsApp_Image_2026-05-03_at_12.17.57_AMv_ic1ljr.jpg',
+    rootsBrideYoung: 'https://res.cloudinary.com/durlokstj/image/upload/v1777757363/WhatsApp_Image_2026-05-03_at_12.17.57_AMs_tlksrh.jpg',
+    rootsBrideAdult: 'https://res.cloudinary.com/durlokstj/image/upload/v1777759733/WhatsApp_Image_2026-05-03_at_1.08.24_AM_syurhk.jpg',
   },
 };
 
@@ -71,7 +69,6 @@ let selectedTheme = null;
       });
     }
 
-    showChaseAvatars();
     updateTicketSide();
 
     if (overlay) {
@@ -108,7 +105,6 @@ let selectedTheme = null;
         initRoots();
         initRSVP();
         initDigitalTicket();
-        initLoveChase();
         spawnPetals();
         updateNavDots();
 
@@ -148,8 +144,8 @@ function applyWeddingConfig() {
     );
   }
 
-  const groomHeroName = $('.name-adam');
-  const brideHeroName = $('.name-farah');
+  const groomHeroName = $('.name-zayn');
+  const brideHeroName = $('.name-gigi');
   if (groomHeroName) groomHeroName.textContent = groomDisplay;
   if (brideHeroName) brideHeroName.textContent = brideDisplay;
 
@@ -173,11 +169,6 @@ function applyWeddingConfig() {
 
   const ticketLocation = $('#ticketLocationText');
   if (ticketLocation) ticketLocation.textContent = weddingConfig.location;
-
-  const chaseBride = $('#chase-bride');
-  const chaseGroom = $('#chase-groom');
-  if (chaseBride) chaseBride.src = weddingConfig.images.chaseBride;
-  if (chaseGroom) chaseGroom.src = weddingConfig.images.chaseGroom;
 
   const rootCards = $$('#roots .root-card');
   const groomCard = rootCards[0];
@@ -212,22 +203,6 @@ function applyWeddingConfig() {
       adult.alt = `${brideDisplay} today`;
     }
   }
-}
-
-function showChaseAvatars() {
-  const bride = $('#chase-bride');
-  const groom = $('#chase-groom');
-  if (!bride || !groom) return;
-
-  gsap.set([bride, groom], { display: 'block' });
-  gsap.fromTo([bride, groom], {
-    autoAlpha: 0,
-  }, {
-    autoAlpha: 1,
-    duration: 0.5,
-    ease: 'power2.out',
-    stagger: 0.06,
-  });
 }
 
 function createParticles() {
@@ -322,14 +297,21 @@ function initScrollAnimations() {
 }
 
 function initRoots() {
-  $$('.root-circle').forEach((circle) => {
-    ScrollTrigger.create({
-      trigger: circle,
-      start: 'top 50%',
-      onEnter: () => circle.classList.add('revealed-adult'),
-      onLeaveBack: () => circle.classList.remove('revealed-adult'),
+  const circles = $$('#roots .root-circle');
+  if (!circles.length) return;
+
+  // Start with adult visible, then toggle Adult <-> Childhood every 3s.
+  let showAdult = true;
+  circles.forEach((circle) => circle.classList.add('revealed-adult'));
+
+  setInterval(() => {
+    showAdult = !showAdult;
+    circles.forEach((circle) => {
+      circle.classList.add('photo-fade');
+      circle.classList.toggle('revealed-adult', showAdult);
+      setTimeout(() => circle.classList.remove('photo-fade'), 420);
     });
-  });
+  }, 3000);
 }
 
 function spawnPetals() {
@@ -354,20 +336,17 @@ function spawnPetals() {
 
 function initCountdown() {
   const target = getWeddingDateTarget();
+  const countdown = $('#countdown');
+  let intervalId = null;
 
   function tick() {
     const diff = target - Date.now();
 
     if (diff <= 0) {
-      const cdDays = $('#cd-days');
-      const cdHours = $('#cd-hours');
-      const cdMins = $('#cd-mins');
-      const cdSecs = $('#cd-secs');
-
-      if (cdDays) cdDays.innerText = '00';
-      if (cdHours) cdHours.innerText = '00';
-      if (cdMins) cdMins.innerText = '00';
-      if (cdSecs) cdSecs.innerText = '00';
+      if (intervalId) clearInterval(intervalId);
+      if (countdown) {
+        countdown.innerHTML = '<p class="countdown-finished">The Wedding is Today!</p>';
+      }
       return;
     }
 
@@ -389,7 +368,7 @@ function initCountdown() {
   }
 
   tick();
-  setInterval(tick, 1000);
+  intervalId = setInterval(tick, 1000);
 }
 
 document.addEventListener('DOMContentLoaded', initCountdown);
@@ -695,16 +674,4 @@ function initDigitalTicket() {
       }
     }, 120);
   });
-}
-
-function initLoveChase() {
-  const bride = $('#chase-bride');
-  const groom = $('#chase-groom');
-  if (!bride || !groom) return;
-
-  if (selectedTheme) {
-    gsap.set([bride, groom], { display: 'block', autoAlpha: 1 });
-  } else {
-    gsap.set([bride, groom], { display: 'none', autoAlpha: 0 });
-  }
 }
