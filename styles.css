@@ -1,5 +1,5 @@
 /* ============================================================
-   ADAM & FARAH — Wedding Invitation Stylesheet
+   ZAYN & GIGI — Wedding Invitation Stylesheet
    ============================================================ */
 
 /* ── Custom Properties ── */
@@ -520,6 +520,10 @@ button {
 
 .root-circle.revealed-adult .adult-img {
   opacity: 1;
+}
+
+.root-circle.photo-fade .root-img {
+  transition: opacity 0.85s ease-in-out;
 }
 
 .root-circle-ring {
@@ -1656,38 +1660,6 @@ button {
     width: 36px;
     height: 36px;
     font-size: 0.68rem;
-  }
-}
-
-/* ── Love Chase Avatars ── */
-.chase-avatar {
-  position: fixed !important;
-  display: none;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #ffffff;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  pointer-events: none !important;
-  z-index: 999999 !important;
-  will-change: opacity;
-}
-
-.groom-img {
-  right: 5% !important;
-  top: 25% !important;
-}
-
-.bride-img {
-  left: 5% !important;
-  top: 25% !important;
-}
-
-@media (max-width: 768px) {
-  .chase-avatar {
-    width: 70px;
-    height: 70px;
   }
 }
 
